@@ -1,0 +1,19 @@
+<html>
+  <button id="button">Send Request</button>
+
+  <script>
+    document.getElementById('button').addEventListener('click', () => {
+      const loading = document.createElement('div')
+      loading.innerHTML = 'Loading...'
+      loading.id = 'loading'
+      document.body.appendChild(loading)
+
+      const req = new XMLHttpRequest()
+      req.addEventListener('load', () => {
+        document.getElementById('loading').hidden = true
+      })
+      req.open('GET', '/cypress/fixtures/example.json')
+      req.send()
+    });
+  </script>
+</html>
